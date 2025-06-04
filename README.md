@@ -33,8 +33,14 @@ A Model Context Protocol (MCP) server for Hyperliquid API integration. This serv
 
 ## Installation
 
+
+
 ```bash
-npm install -g @aurracloud/hyperliquid-mcp
+# with mcp-cli installed
+mcp install -g @aurracloud/hyperliquid-mcp
+
+# direct install
+npx -y @aurracloud/mcp-cli install @aurracloud/hyperliquid-mcp -c cursor
 ```
 
 ## Usage

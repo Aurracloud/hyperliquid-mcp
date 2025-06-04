@@ -1,6 +1,6 @@
 {
   "name": "@aurracloud/hyperliquid-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Model Context Protocol (MCP) server for Hyperliquid API integration. Provides tools for querying Hyperliquid data including balances, positions, trades, vaults, and real-time market data.",
   "type": "module",
   "main": "dist/lib.js",
@@ -17,7 +17,12 @@
     "build": "tsc",
     "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node src/index.ts"
+    "dev": "ts-node src/index.ts",
+    "prepare": "npm run build",
+    "release": "./scripts/release.sh",
+    "release:patch": "npm version patch && git push origin main && git push origin --tags",
+    "release:minor": "npm version minor && git push origin main && git push origin --tags",
+    "release:major": "npm version major && git push origin main && git push origin --tags"
   },
   "keywords": [
     "mcp",
