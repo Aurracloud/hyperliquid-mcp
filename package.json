@@ -1,0 +1,99 @@
+{
+  "name": "@aurracloud/hyperliquid-mcp",
+  "version": "1.0.0",
+  "description": "Model Context Protocol (MCP) server for Hyperliquid API integration. Provides tools for querying Hyperliquid data including balances, positions, trades, vaults, and real-time market data.",
+  "type": "module",
+  "main": "dist/lib.js",
+  "types": "dist/lib.d.ts",
+  "bin": {
+    "@aurracloud/hyperliquid-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node src/index.ts"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "hyperliquid",
+    "defi",
+    "perpetuals",
+    "trading",
+    "blockchain",
+    "web3",
+    "api",
+    "tools",
+    "claude",
+    "ai"
+  ],
+  "author": "Aura",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aurracloud/hyperliquid-mcp.git"
+  },
+  "homepage": "https://github.com/aurracloud/hyperliquid-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/aurracloud/hyperliquid-mcp/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "mcpServer": {
+    "description": "MCP server for Hyperliquid API integration. Provides tools for querying Hyperliquid perpetual trading data including positions, trades, vaults, and real-time market information.",
+    "connection": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@aurracloud/hyperliquid-mcp"],
+      "timeout": 30000
+    },
+    "config": {
+      "$schema": "https://schemas.aurracloud.com/server-config-v1.json",
+      "environment": {
+        "optional": {
+          "DEBUG": {
+            "type": "boolean",
+            "description": "Enable debug logging",
+            "default": false
+          },
+          "HYPERLIQUID_TESTNET": {
+            "type": "boolean",
+            "description": "Use Hyperliquid testnet instead of mainnet",
+            "default": false
+          }
+        }
+      }
+    },
+    "capabilities": {
+      "tools": true,
+      "resources": false,
+      "prompts": false
+    },
+    "metadata": {
+      "keywords": ["mcp", "hyperliquid", "defi", "perpetuals", "trading", "web3", "api"],
+      "category": "defi"
+    }
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.8",
+    "@types/node": "^22.15.21",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "@nktkas/hyperliquid": "^0.21.1",
+    "dotenv": "^16.5.0",
+    "zod": "^3.25.30"
+  }
+} 
