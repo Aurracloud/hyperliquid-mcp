@@ -82,7 +82,7 @@ export function registerHyperliquidMcpTools(server: McpServer) {
   const mcpTools = {
     // Trader Position Tools
     getTraderPositions: server.tool(
-      "HYPERLIQUID_getTraderPositions",
+      "getTraderPositions",
       "Get all positions for a specific trader on Hyperliquid.",
       schemas.getTraderPositions.shape,
       async ({ userAddress }) => {
@@ -93,13 +93,13 @@ export function registerHyperliquidMcpTools(server: McpServer) {
           const result = await hyperliquidService.getTraderPositions(userAddress as `0x${string}`);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error) {
-          return { content: [{ type: "text", text: `Error in HYPERLIQUID_getTraderPositions: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
+          return { content: [{ type: "text", text: `Error in getTraderPositions: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
         }
       }
     ),
 
     getTraderPositionForMarket: server.tool(
-      "HYPERLIQUID_getTraderPositionForMarket",
+      "getTraderPositionForMarket",
       "Get a trader's position for a specific market/coin on Hyperliquid.",
       schemas.getTraderPositionForMarket.shape,
       async ({ userAddress, coin }) => {
@@ -110,13 +110,13 @@ export function registerHyperliquidMcpTools(server: McpServer) {
           const result = await hyperliquidService.getTraderPositionForMarket(userAddress as `0x${string}`, coin);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error) {
-          return { content: [{ type: "text", text: `Error in HYPERLIQUID_getTraderPositionForMarket: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
+          return { content: [{ type: "text", text: `Error in getTraderPositionForMarket: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
         }
       }
     ),
 
     getOpenOrders: server.tool(
-      "HYPERLIQUID_getOpenOrders",
+      "getOpenOrders",
       "Get open orders for a trader on Hyperliquid.",
       schemas.getOpenOrders.shape,
       async ({ userAddress }) => {
@@ -127,13 +127,13 @@ export function registerHyperliquidMcpTools(server: McpServer) {
           const result = await hyperliquidService.getOpenOrders(userAddress as `0x${string}`);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error) {
-          return { content: [{ type: "text", text: `Error in HYPERLIQUID_getOpenOrders: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
+          return { content: [{ type: "text", text: `Error in getOpenOrders: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
         }
       }
     ),
 
     getUserFills: server.tool(
-      "HYPERLIQUID_getUserFills",
+      "getUserFills",
       "Get trading history (fills) for a user on Hyperliquid.",
       schemas.getUserFills.shape,
       async ({ userAddress }) => {
@@ -144,14 +144,14 @@ export function registerHyperliquidMcpTools(server: McpServer) {
           const result = await hyperliquidService.getUserFills(userAddress as `0x${string}`);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error) {
-          return { content: [{ type: "text", text: `Error in HYPERLIQUID_getUserFills: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
+          return { content: [{ type: "text", text: `Error in getUserFills: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
         }
       }
     ),
 
     // Market Data Tools
     getMarkets: server.tool(
-      "HYPERLIQUID_getMarkets",
+      "getMarkets",
       "Get all available markets/assets on Hyperliquid.",
       schemas.getMarkets.shape,
       async () => {
@@ -159,13 +159,13 @@ export function registerHyperliquidMcpTools(server: McpServer) {
           const result = await hyperliquidService.getMarkets();
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error) {
-          return { content: [{ type: "text", text: `Error in HYPERLIQUID_getMarkets: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
+          return { content: [{ type: "text", text: `Error in getMarkets: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
         }
       }
     ),
 
     getMarketPrice: server.tool(
-      "HYPERLIQUID_getMarketPrice",
+      "getMarketPrice",
       "Get current price for a specific market on Hyperliquid.",
       schemas.getMarketPrice.shape,
       async ({ coin }) => {
@@ -173,13 +173,13 @@ export function registerHyperliquidMcpTools(server: McpServer) {
           const result = await hyperliquidService.getMarketPrice(coin);
           return { content: [{ type: "text", text: JSON.stringify({ coin, price: result }, null, 2) }] };
         } catch (error) {
-          return { content: [{ type: "text", text: `Error in HYPERLIQUID_getMarketPrice: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
+          return { content: [{ type: "text", text: `Error in getMarketPrice: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
         }
       }
     ),
 
     getMeta: server.tool(
-      "HYPERLIQUID_getMeta",
+      "getMeta",
       "Get meta information about the Hyperliquid exchange.",
       schemas.getMeta.shape,
       async () => {
@@ -187,13 +187,13 @@ export function registerHyperliquidMcpTools(server: McpServer) {
           const result = await hyperliquidService.getMeta();
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error) {
-          return { content: [{ type: "text", text: `Error in HYPERLIQUID_getMeta: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
+          return { content: [{ type: "text", text: `Error in getMeta: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
         }
       }
     ),
 
     getAllMids: server.tool(
-      "HYPERLIQUID_getAllMids",
+      "getAllMids",
       "Get all current mid prices on Hyperliquid.",
       schemas.getAllMids.shape,
       async () => {
@@ -201,14 +201,14 @@ export function registerHyperliquidMcpTools(server: McpServer) {
           const result = await hyperliquidService.getAllMids();
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error) {
-          return { content: [{ type: "text", text: `Error in HYPERLIQUID_getAllMids: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
+          return { content: [{ type: "text", text: `Error in getAllMids: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
         }
       }
     ),
 
     // Funding Rate Tools
     getFundingRates: server.tool(
-      "HYPERLIQUID_getFundingRates",
+      "getFundingRates",
       "Get funding rates for all markets on Hyperliquid.",
       schemas.getFundingRates.shape,
       async () => {
@@ -216,13 +216,13 @@ export function registerHyperliquidMcpTools(server: McpServer) {
           const result = await hyperliquidService.getFundingRates();
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error) {
-          return { content: [{ type: "text", text: `Error in HYPERLIQUID_getFundingRates: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
+          return { content: [{ type: "text", text: `Error in getFundingRates: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
         }
       }
     ),
 
     getPredictedFundings: server.tool(
-      "HYPERLIQUID_getPredictedFundings",
+      "getPredictedFundings",
       "Get predicted funding rates for all markets on Hyperliquid.",
       schemas.getPredictedFundings.shape,
       async () => {
@@ -230,13 +230,13 @@ export function registerHyperliquidMcpTools(server: McpServer) {
           const result = await hyperliquidService.getPredictedFundings();
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error) {
-          return { content: [{ type: "text", text: `Error in HYPERLIQUID_getPredictedFundings: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
+          return { content: [{ type: "text", text: `Error in getPredictedFundings: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
         }
       }
     ),
 
     getMarketFundingRate: server.tool(
-      "HYPERLIQUID_getMarketFundingRate",
+      "getMarketFundingRate",
       "Get funding rate for a specific market on Hyperliquid.",
       schemas.getMarketFundingRate.shape,
       async ({ coin }) => {
@@ -244,13 +244,13 @@ export function registerHyperliquidMcpTools(server: McpServer) {
           const result = await hyperliquidService.getMarketFundingRate(coin);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error) {
-          return { content: [{ type: "text", text: `Error in HYPERLIQUID_getMarketFundingRate: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
+          return { content: [{ type: "text", text: `Error in getMarketFundingRate: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
         }
       }
     ),
 
     getNextFundingTime: server.tool(
-      "HYPERLIQUID_getNextFundingTime",
+      "getNextFundingTime",
       "Get next funding time for a specific market on Hyperliquid.",
       schemas.getNextFundingTime.shape,
       async ({ coin }) => {
@@ -258,14 +258,14 @@ export function registerHyperliquidMcpTools(server: McpServer) {
           const result = await hyperliquidService.getNextFundingTime(coin);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error) {
-          return { content: [{ type: "text", text: `Error in HYPERLIQUID_getNextFundingTime: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
+          return { content: [{ type: "text", text: `Error in getNextFundingTime: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
         }
       }
     ),
 
     // Vault Tools
     getVaultDetails: server.tool(
-      "HYPERLIQUID_getVaultDetails",
+      "getVaultDetails",
       "Get detailed information about a specific vault on Hyperliquid.",
       schemas.getVaultDetails.shape,
       async ({ vaultAddress, userAddress }) => {
@@ -282,13 +282,13 @@ export function registerHyperliquidMcpTools(server: McpServer) {
           );
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error) {
-          return { content: [{ type: "text", text: `Error in HYPERLIQUID_getVaultDetails: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
+          return { content: [{ type: "text", text: `Error in getVaultDetails: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
         }
       }
     ),
 
     getUserVaultEquities: server.tool(
-      "HYPERLIQUID_getUserVaultEquities",
+      "getUserVaultEquities",
       "Get a user's vault equities/deposits on Hyperliquid.",
       schemas.getUserVaultEquities.shape,
       async ({ userAddress }) => {
@@ -299,13 +299,13 @@ export function registerHyperliquidMcpTools(server: McpServer) {
           const result = await hyperliquidService.getUserVaultEquities(userAddress as `0x${string}`);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error) {
-          return { content: [{ type: "text", text: `Error in HYPERLIQUID_getUserVaultEquities: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
+          return { content: [{ type: "text", text: `Error in getUserVaultEquities: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
         }
       }
     ),
 
     getUserSubAccounts: server.tool(
-      "HYPERLIQUID_getUserSubAccounts",
+      "getUserSubAccounts",
       "Get user's subaccounts on Hyperliquid.",
       schemas.getUserSubAccounts.shape,
       async ({ userAddress }) => {
@@ -316,13 +316,13 @@ export function registerHyperliquidMcpTools(server: McpServer) {
           const result = await hyperliquidService.getUserSubAccounts(userAddress as `0x${string}`);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error) {
-          return { content: [{ type: "text", text: `Error in HYPERLIQUID_getUserSubAccounts: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
+          return { content: [{ type: "text", text: `Error in getUserSubAccounts: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
         }
       }
     ),
 
     calculateVaultMetrics: server.tool(
-      "HYPERLIQUID_calculateVaultMetrics",
+      "calculateVaultMetrics",
       "Calculate performance metrics for a vault on Hyperliquid.",
       schemas.calculateVaultMetrics.shape,
       async ({ vaultAddress }) => {
@@ -337,13 +337,13 @@ export function registerHyperliquidMcpTools(server: McpServer) {
           const result = hyperliquidService.calculateVaultMetrics(vaultDetails);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error) {
-          return { content: [{ type: "text", text: `Error in HYPERLIQUID_calculateVaultMetrics: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
+          return { content: [{ type: "text", text: `Error in calculateVaultMetrics: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
         }
       }
     ),
 
     getVaultPortfolioData: server.tool(
-      "HYPERLIQUID_getVaultPortfolioData",
+      "getVaultPortfolioData",
       "Get portfolio performance data for a vault on Hyperliquid.",
       schemas.getVaultPortfolioData.shape,
       async ({ vaultAddress }) => {
@@ -358,13 +358,13 @@ export function registerHyperliquidMcpTools(server: McpServer) {
           const result = hyperliquidService.getVaultPortfolioData(vaultDetails);
           return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }] };
         } catch (error) {
-          return { content: [{ type: "text", text: `Error in HYPERLIQUID_getVaultPortfolioData: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
+          return { content: [{ type: "text", text: `Error in getVaultPortfolioData: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
         }
       }
     ),
 
     isValidVaultAddress: server.tool(
-      "HYPERLIQUID_isValidVaultAddress",
+      "isValidVaultAddress",
       "Check if an address is a valid vault address on Hyperliquid.",
       schemas.isValidVaultAddress.shape,
       async ({ address }) => {
@@ -372,13 +372,13 @@ export function registerHyperliquidMcpTools(server: McpServer) {
           const result = await hyperliquidService.isValidVaultAddress(address);
           return { content: [{ type: "text", text: JSON.stringify({ address, isValidVault: result }, null, 2) }] };
         } catch (error) {
-          return { content: [{ type: "text", text: `Error in HYPERLIQUID_isValidVaultAddress: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
+          return { content: [{ type: "text", text: `Error in isValidVaultAddress: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
         }
       }
     ),
 
     getVaultStrategies: server.tool(
-      "HYPERLIQUID_getVaultStrategies",
+      "getVaultStrategies",
       "Get vault strategies (child addresses) for a vault on Hyperliquid.",
       schemas.getVaultStrategies.shape,
       async ({ vaultAddress }) => {
@@ -399,7 +399,7 @@ export function registerHyperliquidMcpTools(server: McpServer) {
             strategiesCount: strategies.length 
           }, null, 2) }] };
         } catch (error) {
-          return { content: [{ type: "text", text: `Error in HYPERLIQUID_getVaultStrategies: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
+          return { content: [{ type: "text", text: `Error in getVaultStrategies: ${error instanceof Error ? error.message : String(error)}` }], isError: true };
         }
       }
     ),

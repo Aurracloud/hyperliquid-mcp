@@ -1,6 +1,6 @@
 {
   "name": "@aurracloud/hyperliquid-mcp",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Model Context Protocol (MCP) server for Hyperliquid API integration. Provides tools for querying Hyperliquid data including balances, positions, trades, vaults, and real-time market data.",
   "type": "module",
   "main": "dist/lib.js",
